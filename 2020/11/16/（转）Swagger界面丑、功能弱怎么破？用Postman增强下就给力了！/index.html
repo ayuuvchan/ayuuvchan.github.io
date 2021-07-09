@@ -18,7 +18,7 @@
   <meta name="author" content="Ayu">
   <meta name="keywords" content="">
   
-  <title>Maven使用之packaging篇----pom、jar、war - Ayu</title>
+  <title>[转] Swagger界面丑、功能弱怎么破？用Postman增强下就给力了！ - Ayu</title>
 
   <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" />
 
@@ -163,7 +163,7 @@
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
           <div class="page-header text-center fade-in-up">
-            <span class="h2" id="subtitle" title="Maven使用之packaging篇----pom、jar、war">
+            <span class="h2" id="subtitle" title="[转] Swagger界面丑、功能弱怎么破？用Postman增强下就给力了！">
               
             </span>
 
@@ -173,8 +173,8 @@
   
     <span class="post-meta">
       <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-      <time datetime="2020-10-12 18:12" pubdate>
-        2020年10月12日 晚上
+      <time datetime="2020-11-16 11:30" pubdate>
+        2020年11月16日 中午
       </time>
     </span>
   
@@ -185,7 +185,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      506 字
+      753 字
     </span>
   
 
@@ -195,7 +195,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      5
+      8
        分钟
     </span>
   
@@ -225,17 +225,80 @@
         <div class="py-5" id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">Maven使用之packaging篇----pom、jar、war</h1>
+            <h1 style="display: none">[转] Swagger界面丑、功能弱怎么破？用Postman增强下就给力了！</h1>
             
             <div class="markdown-body">
-              <h1 id="Maven使用之packaging篇—-pom、jar、war"><a href="#Maven使用之packaging篇—-pom、jar、war" class="headerlink" title="Maven使用之packaging篇—-pom、jar、war"></a>Maven使用之packaging篇—-pom、jar、war</h1><p>综述：</p>
-<p>   项目的打包类型：pom、jar、war</p>
-<p>   1.pom工程：用在父级工程或聚合工程中。用来做jar包的版本控制。</p>
-<p>   2.war工程：将会打包成war，发布在服务器上的工程。如网站或服务。</p>
-<p>   3.jar工程：将会打包成jar用作jar包使用，packaging默认类型。</p>
-<p>项目中一般使用maven进行模块管理，每个模块下对应都有一个pom文件，pom文件中维护了各模块之间的依赖和继承关系。项目模块化可以将通用的部分抽离出来，方便重用；修改一部分代码不再是build整个项目，缩短了build时间；此外各模块都有自己的pom文件，结构更清晰。</p>
-<p>使用maven进行模块划分管理，一般都会有一个父级项目，pom文件除了GAV(groupId, artifactId, version)是必须要配置的，另一个重要的属性就是packaging打包类型，所有的父级项目的packaging都为pom，packing默认是jar类型，如果不作配置，maven会将该项目打成jar包。作为父级项目，还有一个重要的属性，那就是modules，通过modules标签将项目的所有子项目引用进来，在build父级项目时，会根据子模块的相互依赖关系整理一个build顺序，然后依次build。</p>
-<p>而对于各个子项目，需要在其对应的pom文件开头申明对父级项目的引用，通过GAV实现。对于子项目自己的GAV配置，GV如果不配置，则会从父级项目的配置继承过来。子模块可通过dependencies标签来添加自己的依赖，此外子类项目的packaging值一般是war或者jar，前面已经说过，packaging默认是jar类型。如果是需要部署的项目，则需要打包成war类型，如果只是内部调用或者是作服务使用，则推荐打包成jar类型。</p>
+              <h2 id="原文转载链接：Swagger-boot-by-Postman"><a href="#原文转载链接：Swagger-boot-by-Postman" class="headerlink" title="原文转载链接：Swagger-boot by Postman"></a>原文转载链接：<a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s?__biz=MzU1Nzg4NjgyMw==&mid=2247487687&idx=1&sn=d4f54d6b369c6db9ba0c267ed521ff72&chksm=fc2faccfcb5825d94c59290fee323da33f69a6d0a4c2b1a83d3d70efa5618e9f280c619c0666&mpshare=1&scene=23&srcid=1116SBKUGP4rWWV9ROCsMgZN&sharer_sharetime=1605497165695&sharer_shareid=86f52b152633f8337571275e15a944dd#rd">Swagger-boot by Postman</a></h2><blockquote>
+<p>在使用Swagger的时候，你是否会有这种感觉：提交参数为JSON没法格式化，参数错了查找麻烦，返回结果没法折叠，太长了没法看！Swagger结合Postman使用后这一情况有很大改变，今天我们来讲下如何使用Postman增强Swagger的功能，希望对大家有所帮助！</p>
+</blockquote>
+<h2 id="Postman使用"><a href="#Postman使用" class="headerlink" title="Postman使用"></a>Postman使用</h2><p>Postman是一款非常好用的接口调试工具，界面漂亮且功能强大，对Postman不了解的可以看下<a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s?__biz=MzU1Nzg4NjgyMw==&mid=2247483933&idx=1&sn=8373e9b9389939063fb24c2bb3c16e03&scene=21#wechat_redirect">《Postman：API接口调试利器》</a>。</p>
+<h2 id="Swagger结合Postman使用"><a href="#Swagger结合Postman使用" class="headerlink" title="Swagger结合Postman使用"></a>Swagger结合Postman使用</h2><blockquote>
+<p>下面介绍下如何将Swagger API导入到Postman中去，然后使用Postman来调试接口。</p>
+</blockquote>
+<h3 id="Swagger-API导入Postman"><a href="#Swagger-API导入Postman" class="headerlink" title="Swagger API导入Postman"></a>Swagger API导入Postman</h3><ul>
+<li>首先我们需要启动使用了Swagger的应用项目，这里以之前的<code>mall-tiny-swagger</code>项目为例子，找到<code>api-docs</code>路径，访问地址：<a target="_blank" rel="noopener" href="http://localhost:8088/swagger-ui/">http://localhost:8088/swagger-ui/</a></li>
+</ul>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_png/CKvMdchsUwkSMcRrlm7k2xl4ADcYcl4JrSBmuTia2XmzicIRtHeT7XdvzSwgtFGNwiao16lctHNv2Ag7zN3a8XW3w/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1" srcset="/img/loading.gif" lazyload alt="img"></p>
+<ul>
+<li>什么是Swagger的<code>api-docs</code>访问路径？该路径会返回JSON格式数据，应用中Swagger渲染API文档页面的所有数据就是来源于此，Postman也是可以通过这些数据来渲染API文档页面，这里的<code>api-docs</code>地址为：<a target="_blank" rel="noopener" href="http://localhost:8088/v2/api-docs">http://localhost:8088/v2/api-docs</a></li>
+</ul>
+<p><img src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg==" srcset="/img/loading.gif" lazyload alt="img"></p>
+<ul>
+<li>在postman中点击<code>import</code>按钮，选择<code>Link</code>，输入Swagger的<code>api-docs</code>路径即可将Swagger生成的接口导入到Postman中去了；</li>
+</ul>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_png/CKvMdchsUwkSMcRrlm7k2xl4ADcYcl4Jfk9fHzY80lQz9T4bibX8RKcBe4Ccm9ThKibUN7uSeZWU0p6bP8ibzibhMg/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1" srcset="/img/loading.gif" lazyload alt="img"></p>
+<ul>
+<li>直接使用默认选项导入即可，无需修改；</li>
+</ul>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_png/CKvMdchsUwkSMcRrlm7k2xl4ADcYcl4JVM9ps8NkwIAdl8fEntuu7p5MdAjUo4K7Xx6nuklghVwBjkErGuicepg/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1" srcset="/img/loading.gif" lazyload alt="img"></p>
+<ul>
+<li>导入成功后，Swagger中的接口就会出现在Postman中了，之后就只需要在Postman中改改参数就可以开始调试接口了，是不是很方便！</li>
+</ul>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_png/CKvMdchsUwkSMcRrlm7k2xl4ADcYcl4J4nMulrDzeeIIdnRFCaOVg6t3UHfpUcqTLib1rsibmYHfWzHYd87s1Ruw/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1" srcset="/img/loading.gif" lazyload alt="img"></p>
+<h3 id="Postman设置环境变量"><a href="#Postman设置环境变量" class="headerlink" title="Postman设置环境变量"></a>Postman设置环境变量</h3><ul>
+<li>我们随意找个接口访问下，会发现访问出错了，那是因为<code>baseUrl</code>这个环境变量设置有问题，导致了接口无法访问；</li>
+</ul>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_png/CKvMdchsUwkSMcRrlm7k2xl4ADcYcl4JcyWlibQrxq4I4ff9xdM0k8na6xklJGtTptxe3MJCP2aMunKLTYDAnvw/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1" srcset="/img/loading.gif" lazyload alt="img"></p>
+<ul>
+<li>我们只要在Postman中设置<code>baseUrl</code>这个环境变量，就可以正常访问了；</li>
+</ul>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_png/CKvMdchsUwkSMcRrlm7k2xl4ADcYcl4JEFP0CeJZiaT6QfPMIOQqbC3aRicIaf3Td3Nkn8YEVY8NeA58UdLkHVKw/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1" srcset="/img/loading.gif" lazyload alt="img"></p>
+<ul>
+<li>添加好环境变量之后，需要选择好环境才会被应用。</li>
+</ul>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_png/CKvMdchsUwkSMcRrlm7k2xl4ADcYcl4JlDNLPEAzhKENfMFbb1sWNkia6PSgibuuHQB8u2fNjDhWiamol05z6ONkQ/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1" srcset="/img/loading.gif" lazyload alt="img"></p>
+<h3 id="访问需要登录认证的接口"><a href="#访问需要登录认证的接口" class="headerlink" title="访问需要登录认证的接口"></a>访问需要登录认证的接口</h3><ul>
+<li>这时候再次访问接口会发现我们的接口需要登录认证才能正常访问；</li>
+</ul>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_png/CKvMdchsUwkSMcRrlm7k2xl4ADcYcl4JgdTv1AUpfpV4LKH7JYOuiaO0dE3191VvYdsYHtog2HBOwIb3fCvHYoQ/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1" srcset="/img/loading.gif" lazyload alt="img"></p>
+<ul>
+<li>我们可以先调用登录接口来获取Token；</li>
+</ul>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_png/CKvMdchsUwkSMcRrlm7k2xl4ADcYcl4JmH32gvl3qCJagtSxSO4icG21WmVyIXQsyuK9SdnsZTib3Mh2BciaMbROA/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1" srcset="/img/loading.gif" lazyload alt="img"></p>
+<ul>
+<li>给需要登录认证的接口添加<code>Bearer Token</code>类型的Token，我们可以发现需要配置一个叫<code>token</code>的环境变量；</li>
+</ul>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_png/CKvMdchsUwkSMcRrlm7k2xl4ADcYcl4JvLkb2H9wwwniaQJJppyEfrbQ6CicibsHBbuTmeicC3lUzEoicicIdxd1Vbqw/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1" srcset="/img/loading.gif" lazyload alt="img"></p>
+<ul>
+<li>在环境变量中添加<code>token</code>；</li>
+</ul>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_png/CKvMdchsUwkSMcRrlm7k2xl4ADcYcl4J8ReCFFQeFeIdkgPoZ4eESk277woW7CPEynKcB6SnjKicJH06baP9ziag/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1" srcset="/img/loading.gif" lazyload alt="img"></p>
+<ul>
+<li>添加完环境变量后即可正常访问需要登录认证的接口了。</li>
+</ul>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_png/CKvMdchsUwkSMcRrlm7k2xl4ADcYcl4JG50YibaSNvLXBLILiaNuQKJQQkCE9kKDp8gRwib3Gpk96Oib7L9OicO98zA/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1" srcset="/img/loading.gif" lazyload alt="img"></p>
+<h2 id="有何缺点"><a href="#有何缺点" class="headerlink" title="有何缺点"></a>有何缺点</h2><blockquote>
+<p>此种方法使用Postman来调试接口是非常强大的，但是对于文档展示能力有点偏弱。</p>
+</blockquote>
+<ul>
+<li>比如说Swagger中的接口对于请求和返回参数都有非常完善的注释信息；</li>
+</ul>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_png/CKvMdchsUwkSMcRrlm7k2xl4ADcYcl4JZPfPo7gC7pAF7RKP4RlpicUwyGIfpcJpGhDLtIeicLYE5EHx4BOD8PqA/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1" srcset="/img/loading.gif" lazyload alt="img"></p>
+<ul>
+<li>而在Postman中，这些文档信息得不到体现，Postman毕竟还只是一个接口调试工具。</li>
+</ul>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_png/CKvMdchsUwkSMcRrlm7k2xl4ADcYcl4JZibyZwhQdZNYFv6ibickO0mCa7WUYIOaiarlQ1gpczI7siamibhNdM8EmJicA/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1" srcset="/img/loading.gif" lazyload alt="img"></p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>Swagger和Postman结合使用比较好，Swagger用来看接口文档信息，Postman用于调试，将Swagger中的接口导入到Postman中可以弥补Swagger在接口调试方面的不足。</p>
 
             </div>
             <hr>
@@ -256,9 +319,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2020/10/13/SpringBoot-Cloud-Alibaba%E7%89%88%E6%9C%AC%E5%AF%B9%E5%BA%94/">
+                      <a href="/2021/03/25/SSH%E7%99%BB%E5%BD%95%E8%99%9A%E6%8B%9F%E6%9C%BAlocalhost%E5%8F%8D%E5%90%91%E8%A7%A3%E6%9E%90%E6%85%A2/">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">SpringBoot-Cloud-Alibaba版本对应</span>
+                        <span class="hidden-mobile">SSH登录虚拟机localhost反向解析慢</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -266,8 +329,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2020/05/20/hello-world/">
-                        <span class="hidden-mobile">Hello World</span>
+                      <a href="/2020/10/13/SpringBoot-Cloud-Alibaba%E7%89%88%E6%9C%AC%E5%AF%B9%E5%BA%94/">
+                        <span class="hidden-mobile">SpringBoot-Cloud-Alibaba版本对应</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
