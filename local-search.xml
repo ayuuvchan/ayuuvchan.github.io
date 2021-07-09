@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search>
+  
+  
+  
+  <entry>
+    <title>SpringBoot-Cloud-Alibaba版本对应</title>
+    <link href="/2021/07/09/SpringBoot-Cloud-Alibaba%E7%89%88%E6%9C%AC%E5%AF%B9%E5%BA%94/"/>
+    <url>/2021/07/09/SpringBoot-Cloud-Alibaba%E7%89%88%E6%9C%AC%E5%AF%B9%E5%BA%94/</url>
+    
+    <content type="html"><![CDATA[<table><thead><tr><th align="left">SpringClould Version</th><th align="left">SpringCloud Alibaba Version</th><th align="left">SpringBoot Version</th></tr></thead><tbody><tr><td align="left">Greenwich</td><td align="left">0.9.X.RELEASE</td><td align="left">2.1.X.RELEASE</td></tr><tr><td align="left">Finchley</td><td align="left">0.2.X.RELEASE</td><td align="left">2.0.X.RELEASE</td></tr><tr><td align="left">Edgware</td><td align="left">0.1.X.RELEASE</td><td align="left">1.5.X.RELEASE</td></tr><tr><td align="left">Dalston</td><td align="left">0.1.X.RELEASE</td><td align="left">1.5.X.RELEASE</td></tr></tbody></table>]]></content>
+    
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>SSH登录虚拟机localhost反向解析慢</title>
+    <link href="/2021/03/25/SSH%E7%99%BB%E5%BD%95%E8%99%9A%E6%8B%9F%E6%9C%BAlocalhost%E5%8F%8D%E5%90%91%E8%A7%A3%E6%9E%90%E6%85%A2/"/>
+    <url>/2021/03/25/SSH%E7%99%BB%E5%BD%95%E8%99%9A%E6%8B%9F%E6%9C%BAlocalhost%E5%8F%8D%E5%90%91%E8%A7%A3%E6%9E%90%E6%85%A2/</url>
+    
+    <content type="html"><![CDATA[<h1 id="SSH登录虚拟机localhost反向解析慢"><a href="#SSH登录虚拟机localhost反向解析慢" class="headerlink" title="SSH登录虚拟机localhost反向解析慢"></a>SSH登录虚拟机localhost反向解析慢</h1><p>用虚拟机NAT连接网络并映射到宿主机端口时，用XShell连接认证非常慢。</p><p>经过查询之后发现CentOS的/etc/ssh/sshd_config配置文件中UseDNS项默认是打开的，在SSH连接前需要进行反向DNS解析认证，关闭之后连接localhost的映射端口速度正常。</p><p>至于为何没有影响公网ip的速度，猜测跟DNS服务器的解析机制有关。</p><p>【待研究】。</p>]]></content>
+    
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>Maven使用之packaging篇----pom、jar、war</title>
+    <link href="/2020/10/12/Maven%E4%BD%BF%E7%94%A8%E4%B9%8Bpackaging%E7%AF%87----pom%E3%80%81jar%E3%80%81war/"/>
+    <url>/2020/10/12/Maven%E4%BD%BF%E7%94%A8%E4%B9%8Bpackaging%E7%AF%87----pom%E3%80%81jar%E3%80%81war/</url>
+    
+    <content type="html"><![CDATA[<h1 id="Maven使用之packaging篇—-pom、jar、war"><a href="#Maven使用之packaging篇—-pom、jar、war" class="headerlink" title="Maven使用之packaging篇—-pom、jar、war"></a>Maven使用之packaging篇—-pom、jar、war</h1><p>综述：</p><p>   项目的打包类型：pom、jar、war</p><p>   1.pom工程：用在父级工程或聚合工程中。用来做jar包的版本控制。</p><p>   2.war工程：将会打包成war，发布在服务器上的工程。如网站或服务。</p><p>   3.jar工程：将会打包成jar用作jar包使用，packaging默认类型。</p><p>项目中一般使用maven进行模块管理，每个模块下对应都有一个pom文件，pom文件中维护了各模块之间的依赖和继承关系。项目模块化可以将通用的部分抽离出来，方便重用；修改一部分代码不再是build整个项目，缩短了build时间；此外各模块都有自己的pom文件，结构更清晰。</p><p>使用maven进行模块划分管理，一般都会有一个父级项目，pom文件除了GAV(groupId, artifactId, version)是必须要配置的，另一个重要的属性就是packaging打包类型，所有的父级项目的packaging都为pom，packing默认是jar类型，如果不作配置，maven会将该项目打成jar包。作为父级项目，还有一个重要的属性，那就是modules，通过modules标签将项目的所有子项目引用进来，在build父级项目时，会根据子模块的相互依赖关系整理一个build顺序，然后依次build。</p><p>而对于各个子项目，需要在其对应的pom文件开头申明对父级项目的引用，通过GAV实现。对于子项目自己的GAV配置，GV如果不配置，则会从父级项目的配置继承过来。子模块可通过dependencies标签来添加自己的依赖，此外子类项目的packaging值一般是war或者jar，前面已经说过，packaging默认是jar类型。如果是需要部署的项目，则需要打包成war类型，如果只是内部调用或者是作服务使用，则推荐打包成jar类型。</p>]]></content>
+    
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>Hello World</title>
+    <link href="/2020/05/20/hello-world/"/>
+    <url>/2020/05/20/hello-world/</url>
+    
+    <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p><h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ hexo new <span class="hljs-string">&quot;My New Post&quot;</span><br></code></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p><h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ hexo server<br></code></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p><h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ hexo generate<br></code></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p><h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ hexo deploy<br></code></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>]]></content>
+    
+    
+    
+  </entry>
+  
+  
+  
+  
+</search>
